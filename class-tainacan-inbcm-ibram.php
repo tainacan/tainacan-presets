@@ -1,6 +1,6 @@
 <?php
 
-namespace Tainacan\Mappers;
+namespace Tainacan\IBRAM\Mappers;
 
 /**
  * Support IBRAM INBCM Mapping 

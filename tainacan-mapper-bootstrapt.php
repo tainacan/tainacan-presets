@@ -19,7 +19,7 @@ class TainacanMapperBootstrapt {
 
 	function registerExposerMapper($exposers) {
 		require_once( plugin_dir_path(__FILE__) . 'class-tainacan-inbcm-ibram.php' );
-		$exposers->register_mapper('\Tainacan\Mappers\Mapper_Inbcm_Ibram');
+		$exposers->register_mapper('Tainacan\IBRAM\Mappers\Mapper_Inbcm_Ibram');
 	}
 }
 
