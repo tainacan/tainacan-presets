@@ -56,32 +56,29 @@ class Mapper_Inbcm_Ibram extends \Tainacan\Mappers\Mapper {
 		'dimensoes-espessura' => [
 			'label' => 'Dimensões - espessura'
 		],
-		'Dimensoes-profundidade-comprimento' => [
+		'dimensoes-profundidade-comprimento' => [
 			'label' => 'Dimensões - profundidade/comprimento'
 		],
 		'dimensoes-peso' => [
 			'label' => 'Dimensões - peso'
 		],
 		'material-tecnica' => [
-			'label' => 'Material / Técnica'
+			'label' => 'Material/Técnica'
 		],
 		'estado-conservacao' => [
-			'label' => 'Estado de Conservação'
+			'label' => 'Estado de conservação'
 		],
-		'Local-producao' => [
+		'local-producao' => [
 			'label' => 'Local de produção'
 		],
 		'data-producao' => [
 			'label' => 'Data de produção'
 		],
-		'Condicoes-reproducao' => [
+		'condicoes-reproducao' => [
 			'label' => 'Condições de reprodução'
 		],
 		'midias-relacionadas' => [
 			'label' => 'Mídias relacionadas'
-		],
-		'Condicoes-reproducao' => [
-			'label' => 'Condições de reprodução'
 		]
 	];
 }
