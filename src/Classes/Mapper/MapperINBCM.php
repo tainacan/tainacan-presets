@@ -1,13 +1,13 @@
 <?php
 
-namespace Tainacan\IBRAM\Mappers;
+namespace INBCM\Preset\Tainacan\Classes\Mapper;
 
 /**
  * Support IBRAM INBCM Mapping 
  * http://purl.org/dc/elements/1.1/
  *
  */
-class Mapper_Inbcm_Ibram extends \Tainacan\Mappers\Mapper {
+class MapperINBCM extends \Tainacan\Mappers\Mapper {
 	public $slug = 'inbcm-ibram';
 	public $name = 'INBCM - IBRAM';
 	public $allow_extra_metadata = true;
@@ -18,10 +18,12 @@ class Mapper_Inbcm_Ibram extends \Tainacan\Mappers\Mapper {
 	];
 	public $metadata = [
 		'numero-registro' => [
-			'label' => 'Número de registro'
+			'label' => 'Número de registro',
+			'metadata_type' => 'Tainacan\\Metadata_Types\\Text',
 		],
 		'outros-numeros' => [
 			'label' => 'Outros números',
+			'metadata_type' => 'Tainacan\\Metadata_Types\\Numeric',
 		],
 		'situacao' => [
 			'label' => 'Situação',
