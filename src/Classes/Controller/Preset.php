@@ -10,49 +10,71 @@ class Preset {
 		$this->metadatum_repository   = \Tainacan\Repositories\Metadata::get_instance();
 		$this->taxonomy_repository    = \Tainacan\Repositories\Taxonomies::get_instance();
 		$this->term_repository        = \Tainacan\Repositories\Terms::get_instance();
+		$this->metadatum_section_repository = \Tainacan\Repositories\Metadata_Sections::get_instance();
 	}
 
 	public function execute($version)
 	{
 		global $data_sets;
 		if(!isset($data_sets[$version]))
-			return;
+			return false;
 		$data_preset = $data_sets[$version];
 		$taxonomies = $this->create_taxonomies($data_preset);
-		$collection = $this->create_collection($data_preset);
-		$metadatas = $this->create_metadata($collection, $data_preset, $taxonomies);
-		if($metadatas !== false) {
-			$this->published_collection($collection, $data_preset);
+		$collections = $this->create_collection($data_preset);
+		foreach($collections as $slug => $collection) {
+			$metadata_sections = $this->create_metadata_section($collection, $slug, $data_preset);
+			$this->create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections);
 		}
+
+		return array(
+			"collections" => $collections
+		);
 	}
 
 	public function create_collection($data_preset)
 	{
-		$data_collection = $data_preset['collection'];
-		$collection = new \Tainacan\Entities\Collection();
-		$collection->set_name($data_collection['name']);
-		$collection->set_description($data_collection['description']);
-		if($collection->validate()) {
-			$collection = $this->collections_repository->insert( $collection );
-			return $collection;
+		$collections = array();
+		$data_collections = $data_preset['collections'];
+		foreach($data_collections as $slug => $data_collection)
+		{
+			$collection = new \Tainacan\Entities\Collection();
+			$collection->set_name($data_collection['name']);
+			$collection->set_status($data_collection['status']);
+			$collection->set_description($data_collection['description']);
+			if($collection->validate()) {
+				$collection = $this->collections_repository->insert( $collection );
+				$collections[$slug]=$collection;
+			}
 		}
-		return false;
+		return $collections;
 	}
 
-	public function published_collection($collection, $data_preset) 
+	public function create_metadata_section($collection, $slug, $data_preset)
 	{
-		$data_collection = $data_preset['collection'];
-		$collection->set_status($data_collection['status']);
-		if($collection->validate()) {
-			$collection = $this->collections_repository->insert( $collection );
-			return $collection;
+		$meta_sections = array();
+		$metadata_sections = $data_preset['collections'][$slug]['metadata_sections'];
+		foreach($metadata_sections as $metadata_section) {
+			$section = new \Tainacan\Entities\Metadata_Section();
+			$section->set_collection( $collection );
+			$section->set_name($metadata_section["name"]);
+			$section->set_description($metadata_section["description"]);
+			$slug = $metadata_section['slug'];
+			$section->set_slug($slug);
+			if($section->validate()) {
+				$section = $this->metadatum_section_repository->insert($section);
+				$meta_sections[$slug] = $section;
+			} else {
+				echo "ERROS:\n" . json_encode($section->get_errors());
+				return false;
+			}
 		}
+		return $meta_sections;
 	}
 
-	public function create_metadata($collection, $data_preset, $taxonomies)
+	public function create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections)
 	{
 		$metas = array();
-		$metadatas = $data_preset['collection']['metadatas'];
+		$metadatas = $data_preset['collections'][$slug]['metadatas'];
 		foreach($metadatas as $metadata) {
 			$metadatum = new \Tainacan\Entities\Metadatum();
 			$metadatum->set_collection( $collection );
@@ -63,6 +85,9 @@ class Preset {
 			$metadatum->set_required($metadata["required"]);
 			$metadatum->set_multiple($metadata["multiple"]);
 			$metadatum->set_collection_key($metadata["collection_key"]);
+			$metadata_section_slug = isset($metadata["metadata_section_slug"]) ? $metadata["metadata_section_slug"] : 'default_section';
+			$metadata_section_id = isset($metadata_sections[$metadata_section_slug]) ? $metadata_sections[$metadata_section_slug]->get_id() : \Tainacan\Entities\Metadata_Section::$default_section_slug;
+			$metadatum->set_metadata_section_id( $metadata_section_id );
 
 			if(isset($metadata["metadata_type_options"])) {
 				if($metadata["metadata_type"] === 'Tainacan\\Metadata_Types\\Taxonomy') {
@@ -100,18 +125,17 @@ class Preset {
 	private function exist_taxonomy($taxonomy)
 	{
 		$wp_query = new \WP_Query( [
-			'name' => $taxonomy['slug'],
+			'post_name' => $taxonomy['slug'],
 			'posts_per_page' => 2,
 			'post_type' => \Tainacan\Entities\Taxonomy::get_post_type()
 		] );
-
 		if ( $wp_query->have_posts() ) {
 			/**
 			 * Using WordPress Loop here would cause problems
 			 *
 			 * @see https://core.trac.wordpress.org/ticket/18408
 			 */
-			if($wp_query->found_posts != 1) return false;
+			if(!$wp_query->found_posts > 1) return false;
 			foreach ( $wp_query->posts as $p ) {
 				$result[] = new \Tainacan\Entities\Taxonomy($p->ID);
 			}

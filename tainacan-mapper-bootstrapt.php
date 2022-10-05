@@ -17,12 +17,23 @@ require_once __DIR__.'/vendor/autoload.php';
 class TainacanINBCMBootstrapt {
 
 	public function __construct() {
-		add_action("tainacan-register-mappers", [$this, "registerExposerMapper"]);
+		$this->init();
+		add_action('tainacan-register-mappers', [$this, 'registerExposerMapper']);
+		add_action('admin_enqueue_scripts', [$this, 'tainacanCollectionsPresetsHooksInit']);
+	}
+
+	function init() {
+		\INBCM\Preset\Tainacan\Classes\Api\Preset::getInstance();
 	}
 
 	function registerExposerMapper($exposers) {
 		$exposers->register_mapper('INBCM\Preset\Tainacan\Classes\Mapper\MapperINBCM');
 	}
+
+	function tainacanCollectionsPresetsHooksInit( $hook ) {
+		wp_enqueue_script( 'tainacan-collections-presets-hooks', plugin_dir_url( __FILE__ ) .'/assets/js/hooks.js', ['wp-hooks'] );
+	}
+
 }
 
 $tainacanMapperBootstrapt = new \INBCM\Preset\Tainacan\TainacanINBCMBootstrapt();
