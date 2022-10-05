@@ -15,6 +15,7 @@
             "movimentacao" => array(
                 "name" => "Movimentação",
                 "description" => "Movimentação",
+                "slug" => "gestaomovimentacao",
                 "status" => "publish",
                 "metadata_sections" => array(
                     array(
@@ -306,6 +307,7 @@
             "conservacao" => array(
                 "name" => "Conservação",
                 "description" => "Conservação",
+                "slug" => "gestaoconservacao",
                 "status" => "publish",
                 "metadata_sections" => array(),
                 "metadatas" => array(
@@ -399,6 +401,7 @@
             "restauracao" => array(
                 "name" => "Restauração",
                 "description" => "",
+                "slug" => "gestaorestauracao",
                 "status" => "publish",
                 "metadata_sections" => array(),
                 "metadatas" => array(
@@ -484,6 +487,7 @@
             "descarte" => array(
                 "name" => "Descarte",
                 "description" => "",
+                "slug" => "gestaodescarte",
                 "status" => "publish",
                 "metadata_sections" => array(),
                 "metadatas" => array(

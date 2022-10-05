@@ -35,11 +35,12 @@
                 "file" => "INBCM/files/tax_preset_material_tecnica.csv"
             )
         ),
-        'collection' => array(
+        'collections' => array(
             "inbcm" => array(
-                'name' => 'INBCM',
-                'description' => 'description',
+                'name' => 'acervo',
+                'description' => 'Acervo padrão INBCM',
                 'status' => 'publish',
+                'slug' => 'acervoinbcm',
                 "metadata_sections" => array(),
                 'metadatas' => array(
                     array(

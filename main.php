@@ -11,6 +11,4 @@ use \INBCM\Preset\Tainacan\Classes\Api;
 echo "start main process!\n\n";
 $preset = new Controller\Preset();
 // $preset->execute('INBCM');
-// $preset->execute('MANAGE_COLLECTION');
-
-$api = new Api\Preset();
+$preset->execute('manage_collection');

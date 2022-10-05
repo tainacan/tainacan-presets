@@ -6,11 +6,11 @@ class Preset {
 
 	public function __construct( )
 	{
-		$this->collections_repository = \Tainacan\Repositories\Collections::get_instance();
-		$this->metadatum_repository   = \Tainacan\Repositories\Metadata::get_instance();
-		$this->taxonomy_repository    = \Tainacan\Repositories\Taxonomies::get_instance();
-		$this->term_repository        = \Tainacan\Repositories\Terms::get_instance();
 		$this->metadatum_section_repository = \Tainacan\Repositories\Metadata_Sections::get_instance();
+		$this->collections_repository       = \Tainacan\Repositories\Collections::get_instance();
+		$this->metadatum_repository         = \Tainacan\Repositories\Metadata::get_instance();
+		$this->taxonomy_repository          = \Tainacan\Repositories\Taxonomies::get_instance();
+		$this->term_repository              = \Tainacan\Repositories\Terms::get_instance();
 	}
 
 	public function execute($version)
@@ -31,19 +31,48 @@ class Preset {
 		);
 	}
 
+	private function exist_collection($collection)
+	{
+		$wp_query = new \WP_Query( [
+			'name' => $collection['slug'],
+			'posts_per_page' => 2,
+			'post_type' => \Tainacan\Entities\Collection::get_post_type()
+		] );
+		if ( $wp_query->have_posts() )
+		{
+			/**
+			 * Using WordPress Loop here would cause problems
+			 *
+			 * @see https://core.trac.wordpress.org/ticket/18408
+			 */
+			if(!$wp_query->found_posts > 1) return false;
+			foreach ( $wp_query->posts as $p )
+			{
+				$result[] = new \Tainacan\Entities\Collection($p->ID);
+			}
+			return $result;
+		}
+		return false;
+	}
+
 	public function create_collection($data_preset)
 	{
 		$collections = array();
 		$data_collections = $data_preset['collections'];
 		foreach($data_collections as $slug => $data_collection)
 		{
-			$collection = new \Tainacan\Entities\Collection();
-			$collection->set_name($data_collection['name']);
-			$collection->set_status($data_collection['status']);
-			$collection->set_description($data_collection['description']);
-			if($collection->validate()) {
-				$collection = $this->collections_repository->insert( $collection );
-				$collections[$slug]=$collection;
+			if(!$this->exist_collection($data_collection))
+			{
+				$collection = new \Tainacan\Entities\Collection();
+				$collection->set_name($data_collection['name']);
+				$collection->set_status($data_collection['status']);
+				$collection->set_slug($data_collection['slug']);
+				$collection->set_description($data_collection['description']);
+				if($collection->validate())
+				{
+					$collection = $this->collections_repository->insert( $collection );
+					$collections[$slug]=$collection;
+				}
 			}
 		}
 		return $collections;
@@ -125,7 +154,7 @@ class Preset {
 	private function exist_taxonomy($taxonomy)
 	{
 		$wp_query = new \WP_Query( [
-			'post_name' => $taxonomy['slug'],
+			'name' => $taxonomy['slug'],
 			'posts_per_page' => 2,
 			'post_type' => \Tainacan\Entities\Taxonomy::get_post_type()
 		] );
@@ -148,7 +177,7 @@ class Preset {
 	{
 		$file_spec = dirname(__FILE__) . '/../../../app/data/preset/' .  $taxonomy['file'];
 		$tax = $this->exist_taxonomy($taxonomy);
-		//$tax = $this->taxonomy_repository->fetch(['name' => $taxonomy['slug']], 'OBJECT');
+
 		if ($tax !== false && count($tax) == 1)
 			$tax = $tax[0];
 		else {

@@ -1,6 +1,4 @@
-console.log("wp_enqueue_script");
 if(wp && wp.hooks) {
-    console.log("hooks start");
     /**
      * @collectionsPresets array [ { name: string, description: string, endpoint: string, slug: string } ]
      */
@@ -8,7 +6,7 @@ if(wp && wp.hooks) {
         collectionsPresets.push({
             name: "INBCM",
             description: "Descrição do que é o INBCM",
-            endpoint: "localhost",
+            endpoint: "http://localhost/wp-json/tainacanpreset/v1/execute/inbcm",
             slug: "inbcm-mapper"
         });
         collectionsPresets.push({
@@ -17,7 +15,6 @@ if(wp && wp.hooks) {
             endpoint: "http://localhost/wp-json/tainacanpreset/v1/execute/manage_collection",
             slug: "mgnts-collections"
         });
-        console.log("collectionsPresets", collectionsPresets);
         return collectionsPresets;
     }
     wp.hooks.addFilter("tainacan_collections_presets", "tainacan-hooks", getTainacanCollectionsPresets);
