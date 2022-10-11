@@ -23,7 +23,7 @@ class Preset {
 		$collections = $this->create_collection($data_preset);
 		foreach($collections as $slug => $collection) {
 			$metadata_sections = $this->create_metadata_section($collection, $slug, $data_preset);
-			$this->create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections);
+			$metadatas = $this->create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections, $collections);
 		}
 
 		return array(
@@ -100,11 +100,51 @@ class Preset {
 		return $meta_sections;
 	}
 
-	public function create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections)
+	public function create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections, $collections)
 	{
 		$metas = array();
 		$metadatas = $data_preset['collections'][$slug]['metadatas'];
-		foreach($metadatas as $metadata) {
+		foreach($metadatas as $metadata)
+		{
+			if( $metadata["metadata_type"] === 'Tainacan\\Metadata_Types\\Core_Description')
+			{
+				$core_description_metadatum = $collection->get_core_description_metadatum();
+				$core_description_metadatum->set_name($metadata['name']);
+				$core_description_metadatum->set_description($metadata['description']);
+				$core_description_metadatum->set_status($metadata['status']);
+				$core_description_metadatum->set_required($metadata['required']);
+				$core_description_metadatum->set_collection_key($metadata['collection_key']);
+				if($core_description_metadatum->validate()) {
+					$core_description_metadatum = $this->metadatum_repository->insert($core_description_metadatum);
+					$metas[] = $core_description_metadatum;
+				}
+				continue;
+			}
+
+			if($metadata["metadata_type"] === 'Tainacan\\Metadata_Types\\Core_Title')
+			{
+				$core_title_metadatum = $collection->get_core_title_metadatum();
+				$core_title_metadatum->set_name($metadata['name']);
+				$core_title_metadatum->set_description($metadata['description']);
+				$core_title_metadatum->set_status($metadata['status']);
+				$core_title_metadatum->set_required($metadata['required']);
+				$core_title_metadatum->set_collection_key($metadata['collection_key']);
+				if($core_title_metadatum->validate()) {
+					$core_title_metadatum = $this->metadatum_repository->insert($core_title_metadatum);
+					$metas[] = $core_title_metadatum;
+				}
+				continue;
+			}
+
+			if($metadata["metadata_type"] === 'Tainacan\\Metadata_Types\\Relationship')
+			{
+				$collection_slug = $metadata['metadata_type_options']['collection_id'];
+				$collection_id = $collections[$collection_slug]->get_id();
+				$search = $collections[$collection_slug]->get_core_title_metadatum()->get_id();
+				$metadata['metadata_type_options']['collection_id'] = $collection_id;
+				$metadata['metadata_type_options']['search'] = $search;
+			}
+
 			$metadatum = new \Tainacan\Entities\Metadatum();
 			$metadatum->set_collection( $collection );
 			$metadatum->set_name($metadata["name"]);

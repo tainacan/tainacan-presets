@@ -12,7 +12,7 @@
             )
         ),
         'collections' => array(
-            "movimentacao" => array(
+            "gestaomovimentacao" => array(
                 "name" => "Movimentação",
                 "description" => "Movimentação",
                 "slug" => "gestaomovimentacao",
@@ -53,7 +53,7 @@
                     array(
                         "name" => "Título",
                         "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Title",
                         "status" => "publish",
                         "required" => "yes",
                         "multiple" => "no",
@@ -78,12 +78,12 @@
                         "metadata_type" => "Tainacan\\Metadata_Types\\Taxonomy",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "yes",
+                        "multiple" => "no",
                         "collection_key" => "no",
                         "taxonomy_slug" => "tax_motivo_movimentacao",
                         "metadata_type_options" => array(
                             "allow_new_terms" => "no",
-                            "input_type" => "tainacan-taxonomy-selectbox",
+                            "input_type" => "tainacan-taxonomy-radio",
                             // "taxonomy_id" => 0,
                             "visible_options_list" => false
                         )
@@ -100,10 +100,9 @@
                     array(
                         "name" => "Notas/Observações sobre a movimentação",
                         "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Description",
                         "status" => "publish",
                         "required" => "no",
-                        "multiple" => "no",
                         "collection_key" => "no"
                     ),
                     array(
@@ -152,13 +151,19 @@
                         "collection_key" => "no"
                     ),
                     array(
-                        "name" => "Relacionamento com outros registros de movimentação",
+                        "name" => "Outros registros de movimentação",
                         "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
                         "status" => "publish",
                         "required" => "no",
-                        "multiple" => "no",
-                        "collection_key" => "no"
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaomovimentacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     ),
                     array(
                         "name" => "Método (método utilizado na movimentação)",
@@ -304,7 +309,7 @@
                     )
                 )
             ),
-            "conservacao" => array(
+            "gestaoconservacao" => array(
                 "name" => "Conservação",
                 "description" => "Conservação",
                 "slug" => "gestaoconservacao",
@@ -314,7 +319,7 @@
                     array(
                         "name" => "Título",
                         "description" => "Título (denominação da ação)",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Title",
                         "status" => "publish",
                         "required" => "yes",
                         "multiple" => "no",
@@ -341,7 +346,7 @@
                     array(
                         "name" => "Notas/Observações sobre a conservação",
                         "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Description",
                         "status" => "publish",
                         "required" => "no",
                         "multiple" => "no",
@@ -375,15 +380,6 @@
                         "collection_key" => "no"
                     ),
                     array(
-                        "name" => "Fotografias do processo executado",
-                        "description" => "Fotografias do processo executado",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
-                        "status" => "publish",
-                        "required" => "no",
-                        "multiple" => "no",
-                        "collection_key" => "no"
-                    ),
-                    array(
                         "name" => "Data da próxima avaliação",
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Date",
@@ -391,14 +387,42 @@
                         "required" => "no",
                         "multiple" => "no",
                         "collection_key" => "no"
+                    ),
+                    array(
+                        "name" => "Conservações relacionadas",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaoconservacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
+                    ),
+                    array(
+                        "name" => "Itens da movimentação",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaomovimentacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     )
                     // Fotografias do processo executado (Permitir inserção de fotografias das atividades)
                     // Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
-                    // Relacionamento com outros itens da mesma coleção de conservação: Permitir relacionamento com os registros anteriores de conservação;
-                    // Relacionamento com itens de movimentação: Permitir Relacionamento com os registros de movimentação (Adepender do processo é necessário o deslocamento do objeto)
                 )
             ),
-            "restauracao" => array(
+            "gestaorestauracao" => array(
                 "name" => "Restauração",
                 "description" => "",
                 "slug" => "gestaorestauracao",
@@ -408,7 +432,7 @@
                     array(
                         "name" => "Título",
                         "description" => "Título (denominação da ação)",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Title",
                         "status" => "publish",
                         "required" => "yes",
                         "multiple" => "no",
@@ -435,7 +459,7 @@
                     array(
                         "name" => "Notas/Observações sobre a restauração",
                         "description" => "Notas/Observações sobre a restauração",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Description",
                         "status" => "publish",
                         "required" => "no",
                         "multiple" => "no",
@@ -476,15 +500,57 @@
                         "required" => "no",
                         "multiple" => "no",
                         "collection_key" => "no"
+                    ),
+                    array(
+                        "name" => "Restaurações relacionadas",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaorestauracao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
+                    ),
+                    array(
+                        "name" => "Itens da movimentação",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaomovimentacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
+                    ),
+                    array(
+                        "name" => "Itens da conservação",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "yes",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaoconservacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     )
-                    // • Anexos: O processo pode gerar arquivos como imagens, e documentos (Word/PDF), então espera-se que seja possível anexar tais documentos ao registro.
                     // • Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
-                    // • Relacionamento com outros itens da mesma coleção de restauração: Permitir relacionamento com os registros anteriores de restauração;
-                    // • Relacionamento com itens de movimentação: Permitir Relacionamento com os registros de movimentação (Adepender do processo é necessário o deslocamento do objeto);
-                    // • Relacionamento com itens de conservação: Permitir Relacionamento com os registros de conservação.
+                    // • Anexos: O processo pode gerar arquivos como imagens, e documentos (Word/PDF), então espera-se que seja possível anexar tais documentos ao registro.
                 )
             ),
-            "descarte" => array(
+            "gestaodescarte" => array(
                 "name" => "Descarte",
                 "description" => "",
                 "slug" => "gestaodescarte",
@@ -494,10 +560,9 @@
                     array(
                         "name" => "Título",
                         "description" => "Título (denominação da ação)",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Title",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "no",
                         "collection_key" => "no"
                     ),
                     array(
@@ -530,7 +595,7 @@
                     array(
                         "name" => "Nota/observação sobre o descarte",
                         "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Description",
                         "status" => "publish",
                         "required" => "no",
                         "multiple" => "no",
@@ -544,9 +609,23 @@
                         "required" => "no",
                         "multiple" => "no",
                         "collection_key" => "no"
-                    )
+                    ),
+                    array(
+                        "name" => "itens de movimentação",
+                        "description" => "",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "no",
+                        "multiple" => "no",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"gestaomovimentacao",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
+                    ),
                     // • Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
-                    // • Relacionamento com itens de movimentação: Permitir Relacionamento com os registros de movimentação.
                 )
             )
         )
