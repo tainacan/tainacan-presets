@@ -164,7 +164,7 @@
                         "multiple" => "no",
                         "collection_key" => "no",
                         "metadata_type_options" => array(
-                            "options" => "à mão\ncarrinho\ntransportadora\nautomóvel\npróprio",
+                            "options" => "à mão\ncarrinho\ntransportadora\nautomóvel próprio",
                             "options_separator" => [","]
                         )
                     ),
