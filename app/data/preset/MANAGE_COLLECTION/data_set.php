@@ -84,7 +84,6 @@
                         "metadata_type_options" => array(
                             "allow_new_terms" => "no",
                             "input_type" => "tainacan-taxonomy-radio",
-                            // "taxonomy_id" => 0,
                             "visible_options_list" => false
                         )
                     ),
@@ -134,15 +133,6 @@
                     ),
                     array(
                         "name" => "Local atual (local em que a obra está armazenada/exposta)",
-                        "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
-                        "status" => "publish",
-                        "required" => "no",
-                        "multiple" => "no",
-                        "collection_key" => "no"
-                    ),
-                    array(
-                        "name" => "Relacionamento com objeto(s) do acervo",
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Text",
                         "status" => "publish",
@@ -306,7 +296,23 @@
                         "multiple" => "no",
                         "collection_key" => "no",
                         "metadata_section_slug" => "documentacao"
+                    ),
+                    array(
+                        "name" => "Objeto do acervo museológico",
+                        "description" => "objeto da coleção de acervo museológico",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "yes",
+                        "multiple" => "no",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"acervomuseologico",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     )
+
                 )
             ),
             "gestaoconservacao" => array(
@@ -417,9 +423,23 @@
                             "display_in_related_items" => "no",
                             "search" => ""
                         )
+                    ),
+                    array(
+                        "name" => "Objeto do acervo museológico",
+                        "description" => "objeto da coleção de acervo museológico",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "yes",
+                        "multiple" => "no",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"acervomuseologico",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     )
                     // Fotografias do processo executado (Permitir inserção de fotografias das atividades)
-                    // Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
                 )
             ),
             "gestaorestauracao" => array(
@@ -545,8 +565,22 @@
                             "display_in_related_items" => "no",
                             "search" => ""
                         )
+                    ),
+                    array(
+                        "name" => "Objeto do acervo museológico",
+                        "description" => "objeto da coleção de acervo museológico",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "yes",
+                        "multiple" => "no",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"acervomuseologico",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
                     )
-                    // • Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
                     // • Anexos: O processo pode gerar arquivos como imagens, e documentos (Word/PDF), então espera-se que seja possível anexar tais documentos ao registro.
                 )
             ),
@@ -625,7 +659,21 @@
                             "search" => ""
                         )
                     ),
-                    // • Relacionamento com objeto da coleção de acervo museológico: Permitir relacionamento com o objeto no acervo;
+                    array(
+                        "name" => "Objeto do acervo museológico",
+                        "description" => "objeto da coleção de acervo museológico",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
+                        "status" => "publish",
+                        "required" => "yes",
+                        "multiple" => "no",
+                        "collection_key" => "no",
+                        "metadata_type_options" => array(
+                            "accept_draft_items" => "no",
+                            "collection_id" => 	"acervomuseologico",
+                            "display_in_related_items" => "no",
+                            "search" => ""
+                        )
+                    )
                 )
             )
         )

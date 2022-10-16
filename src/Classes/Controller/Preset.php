@@ -31,6 +31,23 @@ class Preset {
 		);
 	}
 
+	private function get_collection($collection_slug)
+	{
+		$wp_query = new \WP_Query( [
+			'name' => $collection_slug,
+			'posts_per_page' => 1,
+			'post_type' => \Tainacan\Entities\Collection::get_post_type()
+		] );
+		if ( $wp_query->have_posts() )
+		{
+			foreach ( $wp_query->posts as $p )
+			{
+				return new \Tainacan\Entities\Collection($p->ID);
+			}
+		}
+		return false;
+	}
+
 	private function exist_collection($collection)
 	{
 		$wp_query = new \WP_Query( [
@@ -61,7 +78,8 @@ class Preset {
 		$data_collections = $data_preset['collections'];
 		foreach($data_collections as $slug => $data_collection)
 		{
-			if(!$this->exist_collection($data_collection))
+			$collection = $this->exist_collection($data_collection);
+			if(!$collection)
 			{
 				$collection = new \Tainacan\Entities\Collection();
 				$collection->set_name($data_collection['name']);
@@ -71,8 +89,12 @@ class Preset {
 				if($collection->validate())
 				{
 					$collection = $this->collections_repository->insert( $collection );
-					$collections[$slug]=$collection;
+					$collections[$slug] = $collection;
 				}
+			}
+			else 
+			{
+				$collections[$slug] = $collection;
 			}
 		}
 		return $collections;
@@ -139,10 +161,21 @@ class Preset {
 			if($metadata["metadata_type"] === 'Tainacan\\Metadata_Types\\Relationship')
 			{
 				$collection_slug = $metadata['metadata_type_options']['collection_id'];
-				$collection_id = $collections[$collection_slug]->get_id();
-				$search = $collections[$collection_slug]->get_core_title_metadatum()->get_id();
-				$metadata['metadata_type_options']['collection_id'] = $collection_id;
-				$metadata['metadata_type_options']['search'] = $search;
+				if ( isset($collections[$collection_slug]) )
+				{
+					$collection_id = $collections[$collection_slug]->get_id();
+					$search = $collections[$collection_slug]->get_core_title_metadatum()->get_id();
+					$metadata['metadata_type_options']['collection_id'] = $collection_id;
+					$metadata['metadata_type_options']['search'] = $search;
+				}
+				else
+				{
+					$c = $this->get_collection($collection_slug);
+					$collection_id = $c->get_id();
+					$search = $c->get_core_title_metadatum()->get_id();
+					$metadata['metadata_type_options']['collection_id'] = $collection_id;
+					$metadata['metadata_type_options']['search'] = $search;
+				}
 			}
 
 			$metadatum = new \Tainacan\Entities\Metadatum();

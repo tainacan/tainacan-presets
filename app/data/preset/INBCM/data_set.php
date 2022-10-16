@@ -40,7 +40,7 @@
                 'name' => 'acervo',
                 'description' => 'Acervo padrão INBCM',
                 'status' => 'publish',
-                'slug' => 'acervoinbcm',
+                'slug' => 'acervomuseologico',
                 "metadata_sections" => array(),
                 'metadatas' => array(
                     array(
@@ -97,7 +97,7 @@
                     array(
                         "name" => "Título",
                         "description" => "Informação da denominação dada ao objeto atribuído pelo autor, curador ou pelo profissional da documentação.",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Title",
                         "status" => "publish",
                         "required" => "no",
                         "multiple" => "no",
@@ -139,7 +139,7 @@
                     array(
                         "name" => "Resumo descritivo",
                         "description" => "Informação do resumo da descrição textual do objeto, apresentando as características que o identifique inequivocamente e sua função original.",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Textarea",
+                        "metadata_type" => "Tainacan\\Metadata_Types\\Core_Description",
                         "status" => "publish",
                         "required" => "no",
                         "multiple" => "no",
