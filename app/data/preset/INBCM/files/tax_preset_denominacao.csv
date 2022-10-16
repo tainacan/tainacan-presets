@@ -1,15 +1,330 @@
-Corredor 1,,,
-,Estante 1A,,
-,,prateleira 1A1,
-Corredor 2,,,
-,Estante 2A,,
-,,prateleira 2A1,
-,Estante 2B,,
-,,prateleira 2B1,
-,,prateleira 2B2,
-Corredor 3,,,
-,Estante 3A,,
-,,prateleira 3A1,
-,Estante 3B,,
-,,prateleira 3B1,
-,,prateleira 3B2,
+1 * ESTRUTURAS EDIFICADAS E ELEMENTOS DE CONSTRUÇÃO,,
+,1.1 ** Elementos de Construção,
+,,1.1.1 [Elementos de construção associados à cobertura]
+,,1.1.2 [Elementos de construção associados a fechamentos e separações]
+,,1.1.3 [Elementos de construção associados à instalação elétrica]
+,,1.1.4 [Elementos de construção associados à superfície]
+,,1.1.5 [Elementos de construção associados à sustentação]
+,,1.1.6 [Elementos de construção associados ao acabamento]
+,1.2 ** Equipamento Hidráulico,
+,1.3 ** Estruturas Edificadas,
+,,1.3.1 [Estruturas agrícolas]
+,,1.3.2 [Estruturas comerciais]
+,,1.3.3 [Estruturas rituais e cerimoniais]
+,,1.3.4 [Estruturas habitacionais]
+,1.4 ** Estruturas e Elementos de Sítios e Espaços Abertos,
+,,1.4.1 [Elementos de sítios e espaços abertos]
+,,1.4.2 [Estruturas de sítios e espaços abertos]
+2 * OBJETOS DOMÉSTICOS,,
+,2.1 ** Acessórios de Interiores,
+,,2.1.1 [Objetos associados à decoração de interiores]
+,,2.1.2 [Panos e tecidos de interiores]
+,,2.1.2.1 [Panos e tecidos de interiores associados a assentos]
+,,2.1.2.2 [Panos e tecidos associados a camas]
+,,2.1.2.3 [Panos e tecidos associados a janelas e portas]
+,,2.1.2.4 [Panos e tecidos associados a mesas]
+,,2.1.2.5 [Panos e tecidos associados a paredes]
+,,2.1.2.6 [Panos e tecidos associados a pisos]
+,2.2 ** Mobiliário,
+,,2.2.1 [Acessórios de mobiliário]
+,,2.2.2 [Mobiliário]
+,,2.2.2.1 [Assentos]
+,,2.2.2.2 [Mobiliário associado à escrita e leitura]
+,,2.2.2 3 [Mobiliário associado a fechamentos e separações]
+,,2.2.2.4 [Mobiliário associado à guarda e exposição]
+,,2.2.2.5 [Mobiliário associado à toalete]
+,,2.2.2.6 [Mobiliário associado ao ato de pousar]
+,,2.2.2.7 [Mobiliário associado ao repouso]
+,2.3 ** Objetos e Equipamentos de Controle de Temperatura,
+,2.4 ** Objetos e Equipamentos de Iluminação,
+,,2.4.1 [Acessórios de luminárias]
+,,2.4.2 [Luminárias]
+,2.5 ** Objetos e Equipamentos de Preparo de Alimentos,
+,2.6 ** Objetos e Equipamentos de Serviço de Alimentos,
+,,2.6.1 [Utensílios associados à mesa de refeição]
+,,2.6.2 [Utensílios associados ao ato de beber]
+,,2.6.2.1 [Recipientes de beber]
+,,2.6.2.2 [Recipientes de servir bebidas]
+,,2.6.3 [Utensílios associados ao ato de comer]
+,,2.6.3.1 [Utensílios de comer]
+,,2.6.3.2 [Utensílios de servir alimentos]
+,2.7 ** Objetos e Equipamentos de Serviços de Manutenção,
+,2.8 ** Objetos e Equipamentos de Segurança,
+,2.9 ** Utensílios e Equipamentos de Animais Domésticos,
+3 * OBJETOS DE USO PESSOAL,,
+,3.1 ** Adornos Corporais,
+,,3.1.1 [Adornos corporais: acessórios]
+,,3.1.2 [Adornos corporais associados à cabeça]
+,,3.1.3 [Adornos corporais associados a membros]
+,,3.1.4 [Adornos corporais associados ao tronco]
+,"3.2 ** Objetos de Auxílio, Cuidados e Conforto Pessoais",
+,,"3.2.1 [Objetos de auxílio, cuidados e conforto pessoais associados a deficiências físicas]"
+,,"3.2.2 [Objetos de auxílio, cuidados e conforto pessoais associados à guarda e ao porte de itens]"
+,3.3 ** Objetos de Fumantes,
+,3.4 ** Objetos de Identificação Pessoal,
+,3.5 ** Objetos de Toalete,
+,,3.5.1 [Objetos de toalete: acessórios]
+,,3.5.2 [Objetos de toalete associados à higiene corporal]
+,,3.5.3 [Objetos de toalete associados ao rosto]
+,,3.5.4 [Objetos de toalete associados aos pelos]
+,,3.5.5 [Objetos de toalete associados às unhas]
+,3.6 ** Vestuário,
+,,3.6.1 [Acessórios de vestuário]
+,,3.6.2 [Objetos associados à manutenção do vestuário]
+,,3.6.3 [Peças de vestuário]
+,,3.6.3.1 [Peças de vestuário associadas à cabeça]
+,,3.6.3.2 [Peças de vestuário associadas ao tronco e aos membros]
+,,3.6.3.3 [Peças de vestuário associados aos pés]
+,,3.6.3.4 [Peças de vestuário específicas de bebês]
+,,3.6.4 [Trajes]
+4 * EQUIPAMENTO DE ATIVIDADES PRODUTIVAS,,
+,4.1 ** Equipamento Comum a Diversas Atividades Produtivas,
+,4.2 ** Equipamento de Atividades Comerciais,
+,,4.2.1 [Equipamento comum ao comércio]
+,,4.2.2 [Equipamento de estabelecimentos comerciais específicos]
+,,"4.2.2.1 [Comércio de aviamentos, tecidos, roupas e artigos de cama, mesa e banho: utensílios e equipamentos]"
+,,"4.2.2.2 [Comércio de produtos alimentícios, bebidas e fumo: utensílios e equipamentos]"
+,4.3 ** Equipamento de Atividades de Prestação de Serviços,
+,,4.3.1 [Equipamento de atividades de prestação de serviços específicas]
+,,4.3.1.1 [Barbeiro e cabeleireiro: utensílios e equipamentos]
+,,"4.3.1.2 [Bombeiro, eletricista e mecânico: utensílios e equipamentos]"
+,,4.3.1.3 [Correio: utensílios e equipamentos]
+,,"4.3.1.4 [Lavanderia, tinturaria e toalheiro: utensílios e equipamentos]"
+,4.4 ** Equipamento de Atividades de Transformação,
+,,4.4.1 [Fabricação de artigos de couro: utensílios e equipamentos]
+,,"4.4.1.1 [Curtimento de couro e outras preparações de couro, pele: utensílios e equipamentos]"
+,,4.4.1.2 [Fabricação de artigos de couro: utensílios e equipamentos]
+,,"4.4.2 [Fabricação de artigos de ouro, prata e gemas (ourivesaria, joalheria e bijuteria]"
+,,"4.4.3 [Fabricação de artigos de tecido, vestuário e acessórios: utensílios e equipamentos]"
+,,4.4. 4 [Fabricação de bebidas: utensílios e equipamentos]
+,,"4.4. 5 [Fabricação de instrumentos musicais, peças e acessórios: utensílios e equipamentos]"
+,,"4.4.6 [Fabricação de moedas, medalhas, cédulas e barras: utensílios e equipamentos]"
+,,4.4.7 [Fabricação de produtos alimentícios: utensílios e equipamentos]
+,,"4.4.8 [Fabricação de produtos de ferro, aço, alumínio: utensílios e equipamentos]"
+,,4.4.9 [Fabricação de produtos de madeira: utensílios e equipamentos]
+,,4.4.10 [Fabricação de produtos de minerais não-metálicos: utensílios e equipamentos]
+,,4.4.10.1 [Fabricação de produtos cerâmicos: utensílios e equipamentos]
+,,4.4.11 [Fabricação de produtos do fumo: utensílios e equipamentos]
+,,4.4.12 [Fabricação de produtos farmoquímicos e farmacêuticos: utensílios e equipamentos]
+,,4.4 .13 [Fabricação de produtos químicos: utensílios e equipamentos]
+,,4.4.14 [Fabricação de produtos têxteis: utensílios e equipamentos]
+,,4.4.14.1 [Preparação e fiação de fibras têxteis: utensílios e equipamentos]
+,,4.4.14.2 [Tecelagem de fios de fibras têxteis: utensílios e equipamentos]
+,4.5 ** Equipamento de Atividades Extrativas,
+,,4.5.1 [Extração de carvão mineral: utensílios e equipamentos]
+,,4.5.2 [Extração de minerais metálicos: utensílios e equipamentos]
+,,4.5.2.1 [Extração de minerais de ferro: utensílios e equipamentos]
+,,"4.5.2.2 [Extração de minerais metálicos não-ferrosos (ouro, platina, prata etc.): utensílios e equipamentos]"
+,,"4.5.3 [Extração de minerais não-metálicos (areia, argila, pedra, sal etc.): utensílios e equipamentos]"
+,,4.5.3.1 [Extração de gemas (pedras preciosas e semipreciosas): utensílios e equipamentos]
+,"4.6 ** Equipamentos de Agricultura, Jardinagem, Pecuária e Pesca",
+,,4.6.1 [Agricultura: utensílios e equipamentos]
+,,4.6.1.1 [Utensílios e equipamentos associados à colheita e pós-colheita]
+,,4.6.1.2 [Utensílios e equipamentos associados à preparação de terreno e cultivo]
+,,4.6.2 [Jardinagem: utensílios e equipamentos]
+,,4.6.3 [Pecuária: utensílios e equipamentos]
+,,4.6.3.1 [Utensílios e equipamentos associados à alimentação de animais]
+,,4.6.3.2 [Utensílios e equipamentos associados à ordenha]
+,,4.6.3.3 [Utensílios e equipamentos associados ao manejo de animais]
+,,4.6.4 [Pesca: utensílios e equipamentos]
+5 * EQUIPAMENTOS DE ATIVIDADES CIENTÍFICAS E TECNOLÓGICAS,,
+,5.1 ** Equipamento Associado à Astronomia,
+,5.2 ** Equipamento Associado à Biologia,
+,5.3 ** Equipamento Associado à Física,
+,,5.3.1 [Acústica: utensílios e equipamentos]
+,,5.3.2 [Eletricidade e magnetismo: utensílios e equipamentos]
+,,5.3.2.1 [Medição eletromagnética: utensílios e equipamentos]
+,,5.3.3 [Física Nuclear: utensílios e equipamentos]
+,,5.3.4 [Mecânica: utensílios e equipamentos]
+,,5.3.4.1 [Medição mecânica: utensílios e equipamentos]
+,,5.3.5 [Ótica: utensílios e equipamentos]
+,5.4 ** Equipamento Associado à Geologia,
+,5.5 ** Equipamento Associado à Meteorologia,
+,5.6 ** Equipamento Associado à Oceanografia,
+,5.7 ** Equipamento Associado à Química,
+,,5.7.1 [Experimentação química: utensílios e equipamentos]
+,,5.7.2 [Laboratório químico: utensílios e equipamentos]
+,5.8 ** Equipamentos Associados à Medicina e à Psicologia,
+,,5.8.1 [Equipamento comum às atividades da área da saúde]
+,,5.8. 2 [Equipamento de atividades específicas da área da saúde]
+,,5.8.2.1 [Dentistas: utensílios e equipamentos]
+,,5.8.2.2 [Médicos: utensílios e equipamentos]
+,,5.8.2.3 [Psicólogos: utensílios e equipamentos]
+,5.9 ** Equipamentos Associados à Topografia e à Navegação,
+,,5.9.1 [Navegação: utensílios e equipamentos]
+,,5.9.1.1 [Navegação astronômica: utensílios e equipamentos]
+,,5.9.1.2 [Plotagem: utensílios e equipamentos]
+,,5.9.1.3 [Sondagem marítima: utensílios e equipamentos]
+,,5.9.2 [Topografia: utensílios e equipamentos]
+,5.1 0 ** Equipamentos de Medição,
+,,5.10.1 [Medição de massas: utensílios e equipamentos]
+,,5.10.2 [Medição de temperatura: utensílios e equipamentos]
+,,5.10.3 [Medição de tempo: utensílios e equipamentos]
+,,5.10.4 [Medição de volume: utensílios e equipamentos]
+6 * OBJETOS DE ATIVIDADES ARTÍSTICAS,,
+,6.1 ** Objetos Associados à Cinematografia,
+,,6.1.1 [Câmeras e objetivas de cinematografia]
+,,6.1.2 [Suportes de cinematografia]
+,6.2 ** Objetos Associados à Fotografia,
+,,6.2.1 [Acessórios de fotografia]
+,,6.2.2 [Aparelhos óticos de fotografia]
+,,6.2.3 [Câmeras e objetivas de fotografia]
+,,6.2.4 [Suportes de fotografia]
+,6.3 ** Objetos Associados à Gravura,
+,,6.3.1 [Elaboração e preparação: objetos]
+,,6.3.2 [Obra final]
+,,6.3.2.1 [Estampas]
+,6.4 ** Objetos Associados à Música,
+,,6.4.1 [Acessórios de música]
+,,6.4.2 [Documentação musical]
+,,6.4.3 [Elementos de música]
+,,6.4.4 [Instrumentos musicais]
+,,6.4.4.1 [Aerofones]
+,,6.4.4.2 [Automatofones]
+,,6.4.4.3 [Cordofones]
+,,6.4.4.4 [Eletrofones]
+,,6.4.4.5 [Idiofones]
+,,6.4.4.6 [Membranofones]
+,,6.4.5 [Suportes de música]
+,6.5 ** Objetos Associados às Artes Cênicas,
+,,6.5.1 [Cenografia itinerante: objetos]
+,,6.5.2 [Elaboração e preparação: objetos]
+,,6.5.3 [Iluminação cênica: objetos]
+,,6.5.4 [Objetos associados ao espetáculo]
+,,6.5.5 [Vestuário de cena e seus acessórios]
+,6.6 ** Objetos Associados às Artes Plásticas e ao Desenho Técnico,
+,,6.6.1 [Elaboração e preparação: objetos]
+,,6.6.1.1 [Elaboração e preparação: estudos]
+,,6.6.1.2 [Elaboração e preparação: utensílios e equipamentos]
+,,6.6.2 [Obra final]
+,,6.6.2.1 [Desenhos]
+,,6.6.2.2 [Esculturas]
+,,6.6.2.3 [Pinturas]
+7 * EQUIPAMENTO DE COMUNICAÇÃO,,
+,7.1 ** Equipamento de Comunicação Escrita,
+,,7.1.1 [Objetos associados à autenticação e à identificação de documentos]
+,,7.1.2 [Objetos associados à escrita]
+,,"7.1.3 [Objetos associados à guarda, manuseio e transporte de documentos]"
+,7.2 ** Equipamento de Comunicação Sonora,
+,7.3 ** Equipamento de Comunicação Visual,
+,7.4 ** Equipamento de Telecomunicação,
+,7.5 ** Equipamentos de Composição e Impressão,
+,,7.5.1 [Utensílios e equipamentos associados à composição e à impressão]
+,,7.5.2 [Utensílios e equipamentos de composição e impressão]
+,7.6 ** Material de Propaganda,
+,7.7 ** Processadores de Dados e Acessórios,
+,,7.7.1 [Calculadores]
+,,"7.7.2 [Equipamento de computador, periféricos e acessórios]"
+8 * EQUIPAMENTOS DE LAZER E DE ESPORTE,,
+,8.1 ** Equipamento de Festas,
+,8.2 ** Equipamento de Recreação ao Ar Livre,
+,8.3 ** Equipamento Esportivo,
+,,8.3.1 [Equipamento comum a mais de um esporte]
+,,8.3.2 [Equipamento de esportes específicos]
+,,8.3.2.1 [Esgrima: utensílios e equipamentos]
+,,8.3.2.2 [Esqueite: utensílios e equipamentos]
+,,8.3.2.3 [Frescobol: utensílios e equipamentos]
+,,8.3.2.4 [Futebol: utensílios e equipamentos]
+,,8.3.2.5 [Patinação: utensílios e equipamentos]
+,,8.3.2.6 [Pingue-pongue: utensílios e equipamentos]
+,,8.3.2.8 [Surfe: utensílios e equipamentos]
+,,8.3.2.8 [Tênis: utensílios e equipamentos]
+,8.4 ** Equipamento Lúdico,
+,,8.4.1 [Brinquedos]
+,,8.4.2 [Jogos]
+,,8.4.2.1 [Comprovantes de apostas]
+,,8.4.2.2 [Jogos: elementos acessórios]
+,,8.4.2.3 [Jogos: segundo a forma e a função]
+,,8.4.2.4 [Jogos: segundo o mecanismo]
+,,8.4.3 [Objetos lúdicos]
+,8.5 ** Equipamentos de Ginástica e Musculação,
+"9 * OBJETOS DE RITOS, CULTOS E CRENÇAS",,
+,9.1 ** Mobiliário de Culto,
+,,9.1.1 [Mobiliário de culto comum a ritos]
+,,9.1.1.1 [Assentos e genuflexórios]
+,,"9.1.1.2 [Mobiliário associado à pregação, leitura e canto]"
+,,9.1.1.3 [Mobiliário associado a ritos funerários]
+,,9.1.1.4 [Mobiliário associado ao altar e seu entorno]
+,,9.1.2 [Mobiliário de cultos específicos]
+,,9.1.2.1 [Cristianismo: mobiliário de culto]
+,9.2 ** Objetos Rituais e Cerimoniais,
+,,9.2.1 [Objetos rituais e cerimoniais comuns a ritos]
+,,9.2.1.1 [Insígnias]
+,,9.2.1.2 [Objetos associados à iluminação]
+,,9.2.1.3 [Objetos associados à incensação]
+,,9.2.1.4 [Objetos associados à magia e à proteção]
+,,9.2.1.5 [Objetos associados à oferenda]
+,,9.2.1.6 [Objetos associados a ritos funerários]
+,,9.2.1.7 [Objetos associados ao ciclo da vida]
+,,9.2.1.8 [Objetos de devoção]
+,,9.2.2 [Objetos rituais e cerimoniais de cultos específicos]
+,,9.2.2.1 [Cristianismo: objetos rituais e cerimoniais]
+,,9.2.2.2 [Judaísmo: objetos rituais e cerimoniais]
+,,9.2.2.3 [Sincretismo: objetos rituais e cerimoniais]
+,9.3 ** Panos e Tecidos de Uso Litúrgico e Ritual,
+,,9.3.1 [Panos e tecidos litúrgicos e rituais comuns a cultos]
+,,9.3.2 [Panos e tecidos litúrgicos de cultos específicos]
+,,9.3.2.1 [Cristianismo: panos e tecidos litúrgicos e rituais]
+,9.4 ** Vestuário Litúrgico e Ritual,
+,,9.4.1 [Cristianismo: vestuário litúrgico de cultos específicos]
+,,9.4.1.1 [Catolicismo: vestuário litúrgico e acessórios]
+10 * INSÍGNIAS E OBJETOS CERIMONIAIS E/OU COMEMORATIVOS,,
+,10.1 ** Insígnias,
+,,10.1.1 [Bandeiras]
+,,10.1.2 [Brasões]
+,,10.1.3 [Condecorações]
+,,10.1.4 [Distintivos de uniformes]
+,,10.1.5 [Insígnias de autoridades e ocupações]
+,10.2 ** Objetos Cerimoniais e/ou Comemorativos,
+11 * OBJETOS PECUNIÁRIOS,,
+,11.1 ** Dinheiro,
+,11.2 ** Documentos de Câmbio,
+,11.3 ** Documentos de Comércio,
+,,11.3.1 [Documentos de Comércio Interno]
+,,11.3.2 [Títulos de crédito rural]
+,11.4 ** [Documentos de Pagamento],
+,,11.4.1 [Pagamento de alimentação/refeição: documentos]
+,,11.4.2 [Pagamento de espetáculos: documentos]
+,,11.4.3 [Pagamento de ligações telefônicas: documentos]
+,,11.4.4 [Pagamento de transporte: documentos]
+,,11.4.5 [Pagamentos diversos: documentos]
+,11.5 ** Documentos de Sociedades por Ações,
+,11.6 ** Documentos Postais,
+,11.7 ** Documentos Públicos de Arrecadação,
+,11.8 ** Documentos Públicos de Captação de Recursos,
+12 * VEÍCULOS E ACESSÓRIOS,,
+,12.1 ** Acessórios Comuns a Diversos Tipos de Veículo,
+,12.2 ** Veículos Aéreos e Acessórios,
+,,12.2.1 [Acessórios de veículos aéreos]
+,,12.2.2 [Veículos aéreos]
+,12.3 ** Veículos Marítimos e Acessórios,
+,,12.3.1 [Acessórios de veículos marítimos]
+,,12.3.2 [Veículos marítimos]
+,12.4 ** Veículos Terrestres e Acessórios,
+,,12.4.1 [Acessórios de veículos terrestres]
+,,12.4.1.1 [Acessórios de veículos terrestres de tração animal]
+,,12.4.1.2 [Acessórios de veículos terrestres de tração humana]
+,,12.4.1.3 [Acessórios de veículos terrestres motorizados]
+,,12.4.1.4 [Acessórios de veículos terrestres sobre trilhos]
+,,12.4.2 [Veículos terrestres]
+,,12.4.2.1 [Veículos terrestres de tração animal]
+,,12.4.2.2 [Veículos terrestres de tração humana]
+,,12.4.2.3 [Veículos terrestres motorizados]
+,,12.4.2.4 [Veículos terrestres sobre trilhos]
+,12.5 ** Veículos de Transporte Vertical,
+13 * EQUIPAMENTOS DE CAÇA E DE GUERRA,,
+,13.1 ** Armas e Acessórios,
+,,13.1.1 [Acessórios de armas]
+,,13.1.2 [Armas]
+,,13.1.2.1 [Armas branca]
+,,13.1.2.2 [Armas de arremesso]
+,,13.1.2.3 [Armas de choque]
+,,13.1.2.4 [Armas de fogo]
+,13.2 ** Equipamento de Defesa,
+,13.3 ** Munição e Acessórios,
+,,13.3.1 [Acessórios de munição]
+,,13.3.2 [Munição]
+,13.4 ** Petrechos de caça,
+14 * INSTRUMENTOS DE PUNIÇÃO,,
+15 * RECIPIENTES,,
+16 * AMOSTRAS E FRAGMENTOS,,
