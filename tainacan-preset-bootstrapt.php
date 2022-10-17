@@ -46,8 +46,19 @@ class TainacanPresetBootstrapt {
 
 	function filterAddAdminPage($options) {
 		$admin_options = [
+			'tainacanHeaderExtraLabel' => 'Gestão Acervo',
+			'hideHomeRepositorySection' => true,
 			'managecollection' => true,
-			'tainacanHeaderExtraLabel' => 'Gestão Acervo'
+			'hidePrimaryMenu' => true,
+			'hideHomeCollectionsButton' => false,
+			'hideHomeCollectionItemsButton' => false,
+			'hideHomeCollectionSettingsButton' => false,
+			'hideHomeCollectionMetadataButton' => false,
+			'hideHomeCollectionFiltersButton' => false,
+			'hideHomeCollectionActivitiesButton' => true,
+			'hideHomeCollectionThemeCollectionButton' => true,
+			'showHomeCollectionCreateItemButton' => true,
+			'hideHomeThemeCollectionsButton' => true,
 		];
 		$options = array_merge($options, $admin_options);
 		return $options;
