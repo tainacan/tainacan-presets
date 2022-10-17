@@ -1,6 +1,6 @@
 <?php
 
-namespace INBCM\Preset\Tainacan\Classes\Mapper;
+namespace TainacanPreset\Tainacan\Classes\Mapper;
 
 /**
  * Support IBRAM INBCM Mapping 

@@ -1,6 +1,6 @@
 <?php
 
-namespace INBCM\Preset\Tainacan\Classes\Controller;
+namespace TainacanPreset\Tainacan\Classes\Controller;
 
 class Preset {
 

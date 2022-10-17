@@ -1,7 +1,7 @@
 <?php
 
-namespace INBCM\Preset\Tainacan\Classes\Api;
-use \INBCM\Preset\Tainacan\Classes\Controller;
+namespace TainacanPreset\Tainacan\Classes\Api;
+use \TainacanPreset\Tainacan\Classes\Controller;
 
 const TAINACAN_PRESET_REST_NAMESPACE = 'tainacanpreset/v1';
 

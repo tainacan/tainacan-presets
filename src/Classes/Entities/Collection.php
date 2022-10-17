@@ -1,6 +1,6 @@
 <?php
 
-namespace INBCM\Preset\Tainacan\Classes\Entities;
+namespace TainacanPreset\Tainacan\Classes\Entities;
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 

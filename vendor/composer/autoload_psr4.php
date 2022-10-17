@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'INBCM\\Preset\\Tainacan\\' => array($baseDir . '/src'),
+    'TainacanPreset\\Tainacan\\' => array($baseDir . '/src'),
 );
