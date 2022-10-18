@@ -15,6 +15,7 @@ require_once __DIR__.'/app/config.php';
 require_once __DIR__.'/vendor/autoload.php';
 
 class TainacanPresetBootstrapt {
+	private $menu_slug = 'tainacan_admin';
 
 	public function __construct() {
 		$this->init();
@@ -22,18 +23,32 @@ class TainacanPresetBootstrapt {
 		$this->initFilters();
 	}
 
+	private function isManageCollection() {
+		return isset($_GET['managecollection']) && $_GET['managecollection'] == 'true';
+	}
+
 	function init() {
 		\TainacanPreset\Tainacan\Classes\Api\Preset::getInstance();
 	}
 
 	function initActions() {
-		add_action('tainacan-register-mappers', [$this, 'actionRegisterExposerMapper']);
-		add_action('admin_enqueue_scripts', [$this, 'actionTainacanCollectionsPresetsHooksInit']);
+		add_action("admin_menu", [&$this, "actionAddAdminMenu"], 20);
+		add_action('tainacan-register-mappers', [&$this, 'actionRegisterExposerMapper']);
+		add_action('admin_enqueue_scripts', [&$this, 'actionTainacanCollectionsPresetsHooksInit']);
 	}
 
 	function initFilters () {
-		add_filter('tainacan-admin-ui-options', [$this, 'filterAddAdminPage']);
-		add_filter( 'tainacan-api-prepare-items-args', [$this, 'filterRequestParams'], 10, 2);
+		add_filter('tainacan-api-prepare-items-args', [&$this, 'filterRequestParams'], 10, 2);
+		if( $this->isManageCollection() ) {
+			add_filter('tainacan-admin-ui-options', [&$this, 'filterAddAdminPage']);
+			add_filter('tainacan-admin-extra-request-options', [&$this, 'filterAddHeaders']);
+		}
+	}
+
+	function actionAddAdminMenu() {
+		global $submenu;
+		$permalink = admin_url( 'admin.php' ).'?managecollection=true&page=tainacan_admin';
+		$submenu[$this->menu_slug][] = array( 'Gestão acervo', 'manage_options', $permalink, 'Gestão acervo' );
 	}
 
 	function actionRegisterExposerMapper($exposers) {
@@ -59,9 +74,15 @@ class TainacanPresetBootstrapt {
 			'hideHomeCollectionThemeCollectionButton' => true,
 			'showHomeCollectionCreateItemButton' => true,
 			'hideHomeThemeCollectionsButton' => true,
+			'hideCollectionsListCreationDropdown' => true,
+			'hideHomeCollectionCreateNewButton' => true
 		];
 		$options = array_merge($options, $admin_options);
 		return $options;
+	}
+
+	function filterAddHeaders($options) {
+		return array_merge( ['managecollection' => true], $options);
 	}
 
 	function filterRequestParams ( $args, $request ) {
@@ -80,7 +101,8 @@ class TainacanPresetBootstrapt {
 			if($post) $post_ids[] = $post->ID;
 		}
 
-		if( isset($request['managecollection']) && $request['managecollection'] == true ) {
+		$isManagecollection = $request->get_header('managecollection');
+		if( isset($isManagecollection) && $isManagecollection == true ) {
 			$args = array_merge( ['post__in' => $post_ids], $args);
 		} else {
 			$args = array_merge( ['post__not_in' => $post_ids], $args);
@@ -88,7 +110,6 @@ class TainacanPresetBootstrapt {
 
 		return $args;
 	}
-
 }
 
 $tainacanMapperBootstrapt = new \TainacanPreset\Tainacan\TainacanPresetBootstrapt();
