@@ -101,7 +101,7 @@ class TainacanPresetBootstrapt {
 			if($post) $post_ids[] = $post->ID;
 		}
 
-		$isManagecollection = $request->get_header('managecollection');
+		$isManagecollection = $request instanceof \WP_REST_Request ? $request->get_header('managecollection') : false;
 		if( isset($isManagecollection) && $isManagecollection == true ) {
 			$args = array_merge( ['post__in' => $post_ids], $args);
 		} else {
