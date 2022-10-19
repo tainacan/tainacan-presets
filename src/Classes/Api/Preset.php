@@ -37,16 +37,21 @@ class Preset extends \WP_REST_Controller {
 
 	function execute( $request ) {
 		$slug = ( isset($request['slug']) ) ? $request['slug'] : false;
+		if ($slug == false) {
+			return new \WP_REST_Response(['error_message' => "slug is requeried"], 400);
+		}
+
 		$preset = new Controller\Preset();
 		$execute = $preset->execute($slug);
-		if ($slug == false || $execute == false || empty($execute) ) {
+		if ( empty($execute) || !isset($execute['sucess']) || $execute['sucess'] == false ) {
 			return new \WP_REST_Response([
 				'error_message' => "An error occurred when trying to run the preset",
-				'slug' => $slug
+				'slug' => $slug,
+				'erros' => $execute['erros']
 			], 400);
 		}
 
-		return new \WP_REST_Response(array("sucess" => true, "presets" => $execute), 200);
+		return new \WP_REST_Response($execute, 200);
 	}
 
 	function execute_permissions_check() {

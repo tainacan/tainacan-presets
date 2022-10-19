@@ -19,16 +19,60 @@ class Preset {
 		if(!isset($data_sets[$version]))
 			return false;
 		$data_preset = $data_sets[$version];
+		
+		$verifirsResponse = $this->verifiers($data_preset);
+		if($verifirsResponse !== true) {
+			return array(
+				"sucess" => false,
+				"erros" => $verifirsResponse
+			);
+		}
+
 		$taxonomies = $this->create_taxonomies($data_preset);
 		$collections = $this->create_collection($data_preset);
 		foreach($collections as $slug => $collection) {
-			$metadata_sections = $this->create_metadata_section($collection, $slug, $data_preset);
-			$metadatas = $this->create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections, $collections);
+			if($collection instanceof \Tainacan\Entities\Collection) { //skip pre existing collections
+				$metadata_sections = $this->create_metadata_section($collection, $slug, $data_preset);
+				$metadatas = $this->create_metadata($collection, $slug, $data_preset, $taxonomies, $metadata_sections, $collections);
+				if(isset($metadata_sections['errors']) || isset($metadatas['errors'])) {
+					return array(
+						"sucess" => false,
+						"erros" => [
+							"metadata_sections" => $metadata_sections,
+							"metadatas" => $metadatas
+						]
+					);
+				}
+			}
 		}
 
 		return array(
+			"sucess" => true,
 			"collections" => $collections
 		);
+	}
+
+	private function verifiers($verifiers) 
+	{
+		if (!isset($verifiers['verifiers']))
+			return true;
+
+		$isvalid = true;
+		$response = array(
+			'not_exist' => array(
+				'collections' => array()
+			)
+		);
+		if( isset($verifiers['verifiers']['exist']['collections']) ) {
+			$collections = $verifiers['verifiers']['exist']['collections'];
+			foreach($collections as $collection) {
+				if(!$this->exist_collection(['slug' => $collection])) {
+					$isvalid = false;
+					$response['not_exist']['collections'][] = $collection;
+				}
+			}
+		}
+		return $isvalid ? true : $response;
 	}
 
 	private function get_collection($collection_slug)
@@ -94,7 +138,7 @@ class Preset {
 			}
 			else 
 			{
-				$collections[$slug] = $collection;
+				$collections[$slug] =  $collection;
 			}
 		}
 		return $collections;
@@ -115,8 +159,7 @@ class Preset {
 				$section = $this->metadatum_section_repository->insert($section);
 				$meta_sections[$slug] = $section;
 			} else {
-				echo "ERROS:\n" . json_encode($section->get_errors());
-				return false;
+				return array( 'errors' => $section->get_errors() );
 			}
 		}
 		return $meta_sections;
@@ -203,8 +246,7 @@ class Preset {
 				$metadatum = $this->metadatum_repository->insert($metadatum);
 				$metas[] = $metadatum;
 			} else {
-				echo "ERROS:\n" . json_encode($metadatum->get_errors());
-				return false;
+				return array( 'errors' => $metadatum->get_errors(), 'collection_slug' => $slug );
 			}
 		}
 		return $metas;

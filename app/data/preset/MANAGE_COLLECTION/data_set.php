@@ -1,6 +1,13 @@
 <?php
     global $data_sets;
     $data_sets['manage_collection'] = array(
+        'verifiers' => array(
+            'exist' => array(
+                'collections' => array(
+                    'acervomuseologico'
+                )
+            )
+        ),
         'taxonomies' => array(
             "tax_motivo_movimentacao" => array(
                 "name" => "Motivo da Movimentação",
