@@ -13,7 +13,9 @@ if(wp && wp.hooks) {
             name: "Gestão de acervo",
             description: "Gestão de acervo",
             endpoint: "http://localhost/wp-json/tainacanpreset/v1/execute/manage_collection",
-            slug: "mgnts-collections"
+            slug: "mgnts-collections",
+            onSucess: function () { return "sucesso" ;},
+            onError: function () { return "sem sucesso" ;}
         });
         return collectionsPresets;
     }
