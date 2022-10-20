@@ -3,16 +3,18 @@ if(wp && wp.hooks) {
      * @collectionsPresets array [ { name: string, description: string, endpoint: string, slug: string } ]
      */
     function getTainacanCollectionsPresets (collectionsPresets) {
+        const endpointUrl = location.protocol + '//' + location.host;
+        const endpointAPIbase = 'wp-json/tainacanpreset/v1/execute';
         collectionsPresets.push({
             name: "INBCM",
             description: "Descrição do que é o INBCM",
-            endpoint: "http://localhost/wp-json/tainacanpreset/v1/execute/inbcm",
+            endpoint: `${endpointUrl}/${endpointAPIbase}/inbcm`,
             slug: "inbcm-mapper"
         });
         collectionsPresets.push({
             name: "Gestão de acervo",
             description: "Gestão de acervo",
-            endpoint: "http://localhost/wp-json/tainacanpreset/v1/execute/manage_collection",
+            endpoint: `${endpointUrl}/${endpointAPIbase}/manage_collection`,
             slug: "mgnts-collections",
             onSuccess: function (response) { return "Success"; },
             onError: function (response) { return "Error"; }
