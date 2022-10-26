@@ -99,8 +99,8 @@
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Text",
                         "status" => "publish",
-                        "required" => "no",
-                        "multiple" => "no",
+                        "required" => "yes",
+                        "multiple" => "yes",
                         "collection_key" => "no"
                     ),
                     array(
@@ -116,7 +116,7 @@
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Date",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -134,7 +134,7 @@
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Text",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -193,16 +193,6 @@
                         "multiple" => "no",
                         "collection_key" => "no",
                         "metadata_section_slug" => "emprestimo_saida"
-                    ),
-                    array(
-                        "name" => "Finalidade",
-                        "description" => "",
-                        "metadata_type" => "Tainacan\\Metadata_Types\\Text",
-                        "status" => "publish",
-                        "required" => "no",
-                        "multiple" => "no",
-                        "collection_key" => "no",
-                        "metadata_section_slug" => "emprestimo_entrada"
                     ),
                     array(
                         "name" => "Título da exposição",
@@ -310,7 +300,7 @@
                         "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "no",
+                        "multiple" => "yes",
                         "collection_key" => "no",
                         "metadata_type_options" => array(
                             "accept_draft_items" => "no",
@@ -343,8 +333,8 @@
                         "description" => "Dados do responsável pelo procedimento",
                         "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
                         "status" => "publish",
-                        "required" => "no",
-                        "multiple" => "no",
+                        "required" => "yes",
+                        "multiple" => "yes",
                         "collection_key" => "no"
                     ),
                     array(
@@ -370,7 +360,7 @@
                         "description" => "",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Date",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -437,7 +427,7 @@
                         "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "no",
+                        "multiple" => "yes",
                         "collection_key" => "no",
                         "metadata_type_options" => array(
                             "accept_draft_items" => "no",
@@ -470,7 +460,7 @@
                         "description" => "Dados do responsável pelo procedimento. (Possibilidade do procedimento ser realizado por agente externo)",
                         "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -506,7 +496,7 @@
                         "description" => "Data de ínicio do procedimento",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Date",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -579,7 +569,7 @@
                         "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "no",
+                        "multiple" => "yes",
                         "collection_key" => "no",
                         "metadata_type_options" => array(
                             "accept_draft_items" => "no",
@@ -611,7 +601,7 @@
                         "description" => "Data do descarte;",
                         "metadata_type" => "Tainacan\\Metadata_Types\\Date",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -647,7 +637,7 @@
                         "description" => "Dados do responsável pelo descarte",
                         "metadata_type" => "Tainacan\\Metadata_Types\\TextArea",
                         "status" => "publish",
-                        "required" => "no",
+                        "required" => "yes",
                         "multiple" => "no",
                         "collection_key" => "no"
                     ),
@@ -672,7 +662,7 @@
                         "metadata_type" => "Tainacan\\Metadata_Types\\Relationship",
                         "status" => "publish",
                         "required" => "yes",
-                        "multiple" => "no",
+                        "multiple" => "yes",
                         "collection_key" => "no",
                         "metadata_type_options" => array(
                             "accept_draft_items" => "no",
