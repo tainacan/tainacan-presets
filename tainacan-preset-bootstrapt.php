@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Tainacan IBRAM pre-configurações
+Plugin Name: Tainacan pre-configurações
 Plugin URI: https://tainacan.org/
-Description: Plugin for tainacan mappers and presets for IBRAM
-Author: Vinícius Nunes
+Description: Plugin complementar ao Tainacan que adiconar um conjunto de pre-configurações e mapeadores ao Tainacan.
+Author: Tainacan.org
 Version: 0.0.1
-Text Domain: tainacan-preset-ibram
+Text Domain: tainacan-presets
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -86,6 +86,9 @@ class TainacanPresetBootstrapt {
 	}
 
 	function filterRequestParams ( $args, $request ) {
+		if ( $request instanceof \WP_REST_Request && $request->get_route() != '/tainacan/v2/collections' ) {
+			return $args;
+		}
 		global $data_sets;
 		$slugs = array();
 		if( isset( $data_sets['manage_collection']['collections'] ) ) {
