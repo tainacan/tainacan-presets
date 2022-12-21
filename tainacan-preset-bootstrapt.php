@@ -98,7 +98,7 @@ class TainacanPresetBootstrapt {
 			$slugs = array_merge($slugs, array_keys($data_sets['manage_collection']['taxonomies']) );
 		}
 
-		$post_ids = array();
+		$post_ids = array(-1);
 		foreach($slugs as $slug) {
 			$post = get_page_by_path( $slug, OBJECT, [\Tainacan\Entities\Collection::$post_type, \Tainacan\Entities\Taxonomy::$post_type] );
 			if($post) $post_ids[] = $post->ID;
