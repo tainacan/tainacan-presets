@@ -47,8 +47,10 @@ class TainacanPresetBootstrapt {
 
 	function actionAddAdminMenu() {
 		global $submenu;
-		$permalink = admin_url( 'admin.php' ).'?managecollection=true&page=tainacan_admin';
-		$submenu[$this->menu_slug][] = array( 'Gestão acervo', 'manage_options', $permalink, 'Gestão acervo' );
+		if( isset($submenu[$this->menu_slug]) ) {
+			$permalink = admin_url( 'admin.php' ).'?managecollection=true&page=tainacan_admin';
+			$submenu[$this->menu_slug][] = array( 'Gestão acervo', 'manage_options', $permalink, 'Gestão acervo' );
+		}
 	}
 
 	function actionRegisterExposerMapper($exposers) {
